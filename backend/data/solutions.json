@@ -53,11 +53,49 @@
     "problem_id": "valid-parentheses",
     "title": "Valid Parentheses",
     "difficulty": "Easy",
-    "topics": [],
+    "topics": ["String", "Stack"],
     "leetcode_url": "https://leetcode.com/problems/valid-parentheses/",
-    "solutions": [],
-    "key_insights": [],
-    "edge_cases": [],
-    "similar_problems": []
+    "solutions": [
+      {
+        "approach": "Stack",
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "code": "def isValid(s: str) -> bool:\n    \"\"\"\n    Use a stack to match opening and closing brackets.\n    \"\"\"\n    stack = []\n    mapping = {')': '(', '}': '{', ']': '['}\n    \n    for char in s:\n        if char in mapping:  # Closing bracket\n            if not stack or stack[-1] != mapping[char]:\n                return False\n            stack.pop()\n        else:  # Opening bracket\n            stack.append(char)\n    \n    return len(stack) == 0",
+        "explanation": "The stack approach uses a last-in-first-out (LIFO) data structure to match brackets. When we encounter an opening bracket, we push it onto the stack. When we encounter a closing bracket, we check if the top of the stack contains the matching opening bracket. If it does, we pop the stack. If it doesn't (or the stack is empty), the string is invalid. After processing all characters, a valid string will have an empty stack."
+      }
+    ],
+    "key_insights": [
+      "Stacks are perfect for problems involving matching pairs or nested structures",
+      "LIFO (Last-In-First-Out) property naturally matches the nesting behavior of parentheses",
+      "Use a hash map to quickly look up matching bracket pairs",
+      "An empty stack at the end confirms all brackets were properly matched",
+      "Early termination: return false immediately when a mismatch is found"
+    ],
+    "edge_cases": [
+      "Empty string - returns true (vacuously valid)",
+      "Single character - must return false (unpaired bracket)",
+      "Only opening brackets - stack won't be empty at end",
+      "Only closing brackets - stack will be empty when trying to match",
+      "Mismatched pairs like '([)]' - correct bracket types but wrong nesting order",
+      "Odd length strings - cannot be valid (impossible to pair all brackets)"
+    ],
+    "similar_problems": [
+      {
+        "title": "Generate Parentheses",
+        "url": "https://leetcode.com/problems/generate-parentheses/"
+      },
+      {
+        "title": "Longest Valid Parentheses",
+        "url": "https://leetcode.com/problems/longest-valid-parentheses/"
+      },
+      {
+        "title": "Remove Invalid Parentheses",
+        "url": "https://leetcode.com/problems/remove-invalid-parentheses/"
+      },
+      {
+        "title": "Minimum Add to Make Parentheses Valid",
+        "url": "https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/"
+      }
+    ]
   }
 ]
