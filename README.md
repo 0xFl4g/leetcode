@@ -1,6 +1,13 @@
 # LeetCode Learning Tool
 
+> **Educational Tool**: This project is designed for learning and studying algorithmic problem-solving. Solutions are provided for educational purposes to help understand different approaches and patterns.
+
 A comprehensive web application for learning and mastering LeetCode problems. Features detailed solutions, multiple approaches, complexity analysis, and key insights for common coding interview questions.
+
+![Python](https://img.shields.io/badge/Python-3.14-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.128-green)
+![React](https://img.shields.io/badge/React-19.2-blue)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ## Features
 
@@ -44,34 +51,34 @@ leetcode-learning-tool/
 
 ### Backend Setup
 
-1. Navigate to the project root:
-```bash
-cd leetcode-learning-tool
-```
-
-2. Create a virtual environment with uv:
+1. Create a virtual environment with uv:
 ```bash
 uv venv --python 3.14
 ```
 
-3. Install backend dependencies:
+2. Install backend dependencies:
 ```bash
 uv pip install -r backend/requirements.txt
 ```
 
-4. Set up environment variables (optional):
+3. Set up environment variables (optional):
 ```bash
 cp .env.example .env
 # Edit .env if needed (defaults work for local development)
 ```
 
-5. Run the backend server:
+4. Run the backend server:
 ```bash
-uvicorn backend.main:app --reload --port 8000
+uvicorn backend.main:app --reload --port 8001
 ```
 
-The API will be available at `http://localhost:8000`
-API documentation (Swagger UI): `http://localhost:8000/docs`
+Or use the startup script:
+```bash
+./start-backend.sh
+```
+
+The API will be available at `http://localhost:8001`
+API documentation (Swagger UI): `http://localhost:8001/docs`
 
 ### Frontend Setup
 
@@ -88,6 +95,11 @@ bun install
 3. Start the development server:
 ```bash
 bun run dev
+```
+
+Or use the startup script from the project root:
+```bash
+./start-frontend.sh
 ```
 
 The frontend will be available at `http://localhost:5173`
@@ -169,6 +181,8 @@ See existing entries in `solutions.json` for the format.
 5. Submit a pull request
 
 ## License
+
+MIT License - see [LICENSE](LICENSE) file for details.
 
 This project is for educational purposes.
 
