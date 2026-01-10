@@ -23,20 +23,19 @@ backend/
 
 ### Requirements
 
-- Python 3.8 or higher
-- pip package manager
+- Python 3.14 or higher
+- uv (https://docs.astral.sh/uv/)
 
 ### Installation
 
-1. Create a virtual environment (recommended):
+1. Create a virtual environment with uv:
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+uv venv --python 3.14
 ```
 
 2. Install dependencies:
 ```bash
-pip install -r backend/requirements.txt
+uv pip install -r backend/requirements.txt
 ```
 
 3. Configure environment (optional):

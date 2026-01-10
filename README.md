@@ -38,7 +38,8 @@ leetcode-learning-tool/
 
 ### Prerequisites
 
-- Python 3.8 or higher
+- Python 3.14 or higher
+- uv (https://docs.astral.sh/uv/)
 - Bun (https://bun.sh)
 
 ### Backend Setup
@@ -48,15 +49,14 @@ leetcode-learning-tool/
 cd leetcode-learning-tool
 ```
 
-2. Create and activate a virtual environment:
+2. Create a virtual environment with uv:
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+uv venv --python 3.14
 ```
 
 3. Install backend dependencies:
 ```bash
-pip install -r backend/requirements.txt
+uv pip install -r backend/requirements.txt
 ```
 
 4. Set up environment variables (optional):

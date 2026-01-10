@@ -6,7 +6,7 @@ echo "🚀 Starting LeetCode Learning Tool Backend..."
 echo ""
 
 # Activate virtual environment
-source venv/bin/activate
+source .venv/bin/activate
 
 # Start uvicorn server
 echo "Starting FastAPI server on http://127.0.0.1:8001"
