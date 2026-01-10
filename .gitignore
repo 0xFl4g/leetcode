@@ -1,6 +1,9 @@
 # Git worktrees
 .worktrees/
 
+# Private documentation
+docs/plans/
+
 # Python
 __pycache__/
 *.py[cod]
