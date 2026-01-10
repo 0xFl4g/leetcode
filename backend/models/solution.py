@@ -1,5 +1,5 @@
 from pydantic import BaseModel, HttpUrl
-from typing import List, Optional
+from typing import List, Optional, Literal
 
 
 class SolutionApproach(BaseModel):
@@ -14,16 +14,16 @@ class SolutionApproach(BaseModel):
 class SimilarProblem(BaseModel):
     """Reference to a similar problem."""
     title: str
-    url: str
+    url: HttpUrl
 
 
 class Solution(BaseModel):
     """Complete solution package for a LeetCode problem."""
     problem_id: str
     title: str
-    difficulty: str  # Easy, Medium, Hard
+    difficulty: Literal["Easy", "Medium", "Hard"]
     topics: List[str]
-    leetcode_url: str
+    leetcode_url: HttpUrl
     solutions: List[SolutionApproach]
     key_insights: List[str]
     edge_cases: List[str]

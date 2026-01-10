@@ -1,5 +1,6 @@
 import pytest
-from backend.models.solution import Solution, SolutionApproach
+from pydantic import ValidationError
+from backend.models.solution import Solution, SolutionApproach, SimilarProblem
 
 
 def test_solution_approach_creation():
@@ -58,3 +59,41 @@ def test_solution_with_multiple_approaches():
         similar_problems=[]
     )
     assert len(solution.solutions) == 2
+
+
+def test_invalid_difficulty_rejected():
+    """Test that invalid difficulty values raise ValidationError."""
+    with pytest.raises(ValidationError):
+        Solution(
+            problem_id="test",
+            title="Test",
+            difficulty="Super Hard",  # Invalid
+            topics=[],
+            leetcode_url="https://leetcode.com/problems/test/",
+            solutions=[],
+            key_insights=[],
+            edge_cases=[],
+            similar_problems=[]
+        )
+
+
+def test_invalid_leetcode_url_rejected():
+    """Test that malformed URLs are rejected."""
+    with pytest.raises(ValidationError):
+        Solution(
+            problem_id="test",
+            title="Test",
+            difficulty="Easy",
+            topics=[],
+            leetcode_url="not-a-valid-url",  # Invalid
+            solutions=[],
+            key_insights=[],
+            edge_cases=[],
+            similar_problems=[]
+        )
+
+
+def test_similar_problem_with_invalid_url():
+    """Test SimilarProblem rejects invalid URLs."""
+    with pytest.raises(ValidationError):
+        SimilarProblem(title="Test", url="not-a-url")
