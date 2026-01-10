@@ -3,12 +3,51 @@
     "problem_id": "two-sum",
     "title": "Two Sum",
     "difficulty": "Easy",
-    "topics": [],
+    "topics": ["Array", "Hash Table"],
     "leetcode_url": "https://leetcode.com/problems/two-sum/",
-    "solutions": [],
-    "key_insights": [],
-    "edge_cases": [],
-    "similar_problems": []
+    "solutions": [
+      {
+        "approach": "Brute Force",
+        "time_complexity": "O(n²)",
+        "space_complexity": "O(1)",
+        "code": "def twoSum(nums: list[int], target: int) -> list[int]:\n    \"\"\"\n    Brute force approach: check every pair of numbers.\n    \"\"\"\n    for i in range(len(nums)):\n        for j in range(i + 1, len(nums)):\n            if nums[i] + nums[j] == target:\n                return [i, j]\n    return []",
+        "explanation": "The brute force approach checks every possible pair of numbers in the array. For each number at index i, we check all numbers that come after it (index j where j > i) to see if they sum to the target. This guarantees we find the solution if it exists, but is inefficient for large arrays."
+      },
+      {
+        "approach": "Hash Map (Optimal)",
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "code": "def twoSum(nums: list[int], target: int) -> list[int]:\n    \"\"\"\n    Optimal approach using hash map for O(n) time complexity.\n    \"\"\"\n    seen = {}  # Map: number -> index\n    \n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in seen:\n            return [seen[complement], i]\n        seen[num] = i\n    \n    return []",
+        "explanation": "The hash map approach makes a single pass through the array. For each number, we calculate its complement (target - num) and check if we've seen it before. If we have, we've found our pair! If not, we store the current number and its index in the hash map for future lookups. This trades space for time - we use O(n) extra space but achieve O(n) time complexity."
+      }
+    ],
+    "key_insights": [
+      "Hash maps can trade space for time complexity - a common optimization pattern",
+      "The 'complement' pattern: for pair problems, store what you've seen and check for target - current",
+      "One-pass solutions are often possible when you track information as you go",
+      "Consider whether you need the values or the indices - this problem asks for indices"
+    ],
+    "edge_cases": [
+      "Empty array - problem guarantees at least 2 elements, but good to consider",
+      "Array with exactly 2 elements - simplest valid case",
+      "Negative numbers - solution works for any integers",
+      "Duplicate numbers - hash map handles this correctly",
+      "No solution exists - problem guarantees exactly one solution"
+    ],
+    "similar_problems": [
+      {
+        "title": "Two Sum II - Input Array Is Sorted",
+        "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/"
+      },
+      {
+        "title": "3Sum",
+        "url": "https://leetcode.com/problems/3sum/"
+      },
+      {
+        "title": "4Sum",
+        "url": "https://leetcode.com/problems/4sum/"
+      }
+    ]
   },
   {
     "problem_id": "valid-parentheses",
