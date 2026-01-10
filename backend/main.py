@@ -4,7 +4,7 @@ from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
 import os
 import logging
-from api import routes
+from backend.api import routes
 
 # Load environment variables
 load_dotenv()
