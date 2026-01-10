@@ -1,0 +1,24 @@
+[
+  {
+    "problem_id": "two-sum",
+    "title": "Two Sum",
+    "difficulty": "Easy",
+    "topics": [],
+    "leetcode_url": "https://leetcode.com/problems/two-sum/",
+    "solutions": [],
+    "key_insights": [],
+    "edge_cases": [],
+    "similar_problems": []
+  },
+  {
+    "problem_id": "valid-parentheses",
+    "title": "Valid Parentheses",
+    "difficulty": "Easy",
+    "topics": [],
+    "leetcode_url": "https://leetcode.com/problems/valid-parentheses/",
+    "solutions": [],
+    "key_insights": [],
+    "edge_cases": [],
+    "similar_problems": []
+  }
+]
