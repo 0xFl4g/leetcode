@@ -39,8 +39,7 @@ leetcode-learning-tool/
 ### Prerequisites
 
 - Python 3.8 or higher
-- Node.js 16 or higher
-- npm or yarn
+- Bun (https://bun.sh)
 
 ### Backend Setup
 
@@ -83,12 +82,12 @@ cd frontend
 
 2. Install dependencies:
 ```bash
-npm install
+bun install
 ```
 
 3. Start the development server:
 ```bash
-npm run dev
+bun run dev
 ```
 
 The frontend will be available at `http://localhost:5173`
@@ -98,7 +97,7 @@ The frontend will be available at `http://localhost:5173`
 To create a production build of the frontend:
 ```bash
 cd frontend
-npm run build
+bun run build
 ```
 
 The built files will be in `frontend/dist/`

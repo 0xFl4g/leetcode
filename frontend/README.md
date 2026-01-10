@@ -47,8 +47,7 @@ frontend/
 
 ### Prerequisites
 
-- Node.js 16 or higher
-- npm (comes with Node.js)
+- Bun (https://bun.sh)
 
 ### Installation
 
@@ -59,14 +58,14 @@ cd frontend
 
 2. Install dependencies:
 ```bash
-npm install
+bun install
 ```
 
 ### Development
 
 Start the development server:
 ```bash
-npm run dev
+bun run dev
 ```
 
 The application will be available at `http://localhost:5173`
@@ -80,14 +79,14 @@ Features in development mode:
 
 Create an optimized production build:
 ```bash
-npm run build
+bun run build
 ```
 
 Built files will be in the `dist/` directory.
 
 Preview the production build:
 ```bash
-npm run preview
+bun run preview
 ```
 
 ## Environment Configuration
