@@ -55,3 +55,27 @@ def test_get_problem_by_url_not_found():
     url = "https://leetcode.com/problems/fake/"
     response = client.get(f"/api/problems/by-url?url={url}")
     assert response.status_code == 404
+
+
+def test_get_stats():
+    response = client.get("/api/stats")
+    assert response.status_code == 200
+    data = response.json()
+    assert "total_problems" in data
+    assert "total_solutions" in data
+    assert "by_difficulty" in data
+
+
+def test_pagination():
+    response = client.get("/api/problems?limit=1&offset=0")
+    assert response.status_code == 200
+    data = response.json()
+    assert isinstance(data, list)
+    assert len(data) <= 1
+
+
+def test_get_problems_needing_review():
+    response = client.get("/api/problems/needs-review")
+    assert response.status_code == 200
+    data = response.json()
+    assert isinstance(data, list)

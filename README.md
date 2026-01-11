@@ -1,194 +1,119 @@
-# LeetCode Learning Tool
+# LeetCode Solutions
 
-> **Educational Tool**: This project is designed for learning and studying algorithmic problem-solving. Solutions are provided for educational purposes to help understand different approaches and patterns.
+> **Educational Resource**: A collection of LeetCode problem solutions for learning algorithmic problem-solving patterns and techniques.
 
-A comprehensive web application for learning and mastering LeetCode problems. Features detailed solutions, multiple approaches, complexity analysis, and key insights for common coding interview questions.
+A web application for browsing and studying LeetCode solutions. Features a modern dark-themed UI, full-text search with BM25 ranking, and detailed complexity analysis.
 
 ![Python](https://img.shields.io/badge/Python-3.14-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.128-green)
-![React](https://img.shields.io/badge/React-19.2-blue)
+![React](https://img.shields.io/badge/React-19-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ## Features
 
-- Browse and search LeetCode problems
-- Multiple solution approaches with detailed explanations
-- Time and space complexity analysis
-- Key insights and learning patterns
-- Edge cases documentation
-- Similar problems recommendations
-- Clean, responsive UI built with React and Tailwind CSS
-- Fast API backend with FastAPI
+- **Full-text search** with BM25 ranking and result highlighting
+- **Multiple solution approaches** with detailed explanations
+- **Complexity analysis** for time and space
+- **Dark mode UI** with Gmail-style master-detail layout
+- **Filter by difficulty** (Easy, Medium, Hard)
+- **Search by topic** (Array, Hash Table, Stack, etc.)
+- **Fast SQLite backend** with FTS5 full-text search
 
-## Project Structure
+## Screenshots
 
-```
-leetcode-learning-tool/
-├── backend/              # FastAPI backend
-│   ├── api/             # API routes
-│   ├── data/            # Solutions database (JSON)
-│   ├── models/          # Pydantic models
-│   ├── services/        # Business logic
-│   └── main.py          # FastAPI application entry point
-├── frontend/            # React frontend
-│   ├── src/
-│   │   ├── components/  # React components
-│   │   ├── services/    # API client
-│   │   ├── App.jsx      # Main application component
-│   │   └── main.jsx     # React entry point
-│   └── dist/           # Production build output
-├── tests/              # Backend tests
-└── docs/               # Additional documentation
-```
+The interface features a split-panel layout:
+- Left panel: Searchable problem list with difficulty badges
+- Right panel: Solution details with syntax-highlighted code
 
 ## Quick Start
 
 ### Prerequisites
 
-- Python 3.14 or higher
-- uv (https://docs.astral.sh/uv/)
-- Bun (https://bun.sh)
+- Python 3.14+
+- [uv](https://docs.astral.sh/uv/) (Python package manager)
+- [Bun](https://bun.sh) (JavaScript runtime)
 
-### Backend Setup
+### Backend
 
-1. Create a virtual environment with uv:
 ```bash
-uv venv --python 3.14
+# Install dependencies
+uv sync
+
+# Run the server
+uv run uvicorn backend.main:app --reload --port 8001
 ```
 
-2. Install backend dependencies:
-```bash
-uv pip install -r backend/requirements.txt
-```
+API available at `http://localhost:8001` | Docs at `http://localhost:8001/docs`
 
-3. Set up environment variables (optional):
-```bash
-cp .env.example .env
-# Edit .env if needed (defaults work for local development)
-```
+### Frontend
 
-4. Run the backend server:
-```bash
-uvicorn backend.main:app --reload --port 8001
-```
-
-Or use the startup script:
-```bash
-./start-backend.sh
-```
-
-The API will be available at `http://localhost:8001`
-API documentation (Swagger UI): `http://localhost:8001/docs`
-
-### Frontend Setup
-
-1. Navigate to the frontend directory:
 ```bash
 cd frontend
-```
 
-2. Install dependencies:
-```bash
+# Install dependencies
 bun install
-```
 
-3. Start the development server:
-```bash
+# Start dev server
 bun run dev
 ```
 
-Or use the startup script from the project root:
-```bash
-./start-frontend.sh
-```
-
-The frontend will be available at `http://localhost:5173`
+Frontend available at `http://localhost:5173`
 
 ### Production Build
 
-To create a production build of the frontend:
 ```bash
 cd frontend
 bun run build
 ```
 
-The built files will be in `frontend/dist/`
+## Project Structure
 
-## Running Tests
-
-Run the backend test suite:
-```bash
-python -m pytest tests/ -v
+```
+├── backend/
+│   ├── api/              # FastAPI routes
+│   ├── db/               # SQLite database & migrations
+│   ├── models/           # Pydantic models
+│   ├── services/         # Business logic
+│   └── main.py           # Application entry
+├── frontend/
+│   └── src/
+│       ├── components/   # React components
+│       ├── hooks/        # Custom React hooks
+│       ├── services/     # API client
+│       ├── types/        # TypeScript definitions
+│       └── App.tsx       # Main application
+└── tests/                # pytest test suite
 ```
 
 ## API Endpoints
 
-- `GET /api/problems` - Get all problems (with optional filters)
-- `GET /api/problems/{problem_id}` - Get specific problem by ID
-- `GET /api/problems/by-url?url={leetcode_url}` - Get problem by LeetCode URL
-- `GET /api/search?q={query}` - Search problems by title or topic
+| Endpoint | Description |
+|----------|-------------|
+| `GET /api/problems` | List problems (supports `difficulty`, `topic`, `limit`, `offset`) |
+| `GET /api/problems/{id}` | Get problem details with solutions |
+| `GET /api/search?q={query}` | Full-text search with highlighting |
+| `GET /api/stats` | Problem statistics by difficulty |
 
-See `backend/README.md` for detailed API documentation.
+## Tech Stack
 
-## Technology Stack
+**Backend:** FastAPI, SQLite with FTS5, Pydantic, pytest
 
-### Backend
-- FastAPI - Modern Python web framework
-- Pydantic - Data validation using Python type annotations
-- Uvicorn - ASGI server
-- pytest - Testing framework
+**Frontend:** React 19, TypeScript, Tailwind CSS 4, Vite, React Router
 
-### Frontend
-- React 18 - UI library
-- React Router - Client-side routing
-- Axios - HTTP client
-- Tailwind CSS - Utility-first CSS framework
-- Vite - Build tool and dev server
+## Running Tests
 
-## Current Problem Coverage
-
-- Two Sum
-- Valid Parentheses
-- (More problems to be added)
-
-## Development
-
-### Adding New Solutions
-
-Solutions are stored in `backend/data/solutions.json`. Each solution includes:
-- Problem metadata (title, difficulty, topics, LeetCode URL)
-- Multiple solution approaches with code
-- Time and space complexity analysis
-- Detailed explanations
-- Key insights and learning patterns
-- Edge cases
-- Similar problems
-
-See existing entries in `solutions.json` for the format.
-
-### Code Style
-
-- Backend: Follow PEP 8 Python style guide
-- Frontend: Follow standard React/JavaScript conventions
-- Use meaningful variable names and add comments for complex logic
-
-## Contributing
-
-1. Create a feature branch
-2. Make your changes
-3. Add tests if applicable
-4. Ensure all tests pass
-5. Submit a pull request
+```bash
+uv run pytest tests/ -v
+```
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) file for details.
-
-This project is for educational purposes.
+MIT License - see [LICENSE](LICENSE) for details.
 
 ## Resources
 
-- [LeetCode](https://leetcode.com/) - Practice problems
-- [FastAPI Documentation](https://fastapi.tiangolo.com/) - Backend framework
-- [React Documentation](https://react.dev/) - Frontend library
-- [Tailwind CSS](https://tailwindcss.com/) - CSS framework
+- [LeetCode](https://leetcode.com/)
+- [FastAPI](https://fastapi.tiangolo.com/)
+- [React](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)

@@ -60,3 +60,6 @@ frontend/dist/
 # OS
 .DS_Store
 Thumbs.db
+.cache/
+backend/db/*.db
+

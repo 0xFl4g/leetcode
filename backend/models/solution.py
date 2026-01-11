@@ -21,7 +21,7 @@ class Solution(BaseModel):
     """Complete solution package for a LeetCode problem."""
     problem_id: str
     title: str
-    difficulty: Literal["Easy", "Medium", "Hard"]
+    difficulty: Optional[Literal["Easy", "Medium", "Hard"]] = None  # None if unknown
     topics: List[str]
     leetcode_url: HttpUrl
     solutions: List[SolutionApproach]
